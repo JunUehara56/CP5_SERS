@@ -177,7 +177,7 @@ Por esse motivo, o desempenho obtido neste conjunto de dados não garante o mesm
 
 ## Fonte dos dados
 
-Os dados utilizados nesta etapa são provenientes da **[API histórica Open-Meteo](API histórica Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api)**.
+Os dados utilizados nesta etapa são provenientes da **[API histórica Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api)**.
 
 A consulta utiliza dados horários estimados para **Petrolina (PE)**, nas coordenadas aproximadas **-9,39, -40,50**, no período de **01/04/2025 a 30/06/2025**, utilizando o fuso horário `America/Recife`.
 
