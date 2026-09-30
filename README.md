@@ -181,7 +181,6 @@ Empreendimentos de fontes diferentes podem apresentar potências semelhantes ou 
 - **Seaborn**
 - **Scikit-learn**
 - **Jupyter Notebook / Google Colab**
-- **Orange Data Mining**
 - **APIs REST**
 - **Git**
 - **GitHub**
