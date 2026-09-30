@@ -1,4 +1,4 @@
-# CP5 - SERS | APIs, Energias Renováveis e Machine Learning
+# CP5 - SERS | Machine Learning com Dados de Energia
 
 Projeto desenvolvido para a disciplina de **Soluções em Energias Renováveis e Sustentáveis (SERS)**, do curso de **Ciência da Computação da FIAP**.
 
@@ -39,7 +39,7 @@ CP5_SERS/
 
 ## Fonte dos dados
 
-Os dados utilizados nesta etapa são provenientes do **SIGA — Sistema de Informações de Geração da ANEEL**.
+Os dados utilizados nesta etapa são provenientes do **[SIGA — Sistema de Informações de Geração da ANEEL](https://dadosabertos.aneel.gov.br/dataset/siga-sistema-de-informacoes-de-geracao-da-aneel)**.
 
 Cada registro do conjunto de dados representa um empreendimento de geração de energia no Brasil.
 
