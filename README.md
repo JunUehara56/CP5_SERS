@@ -76,14 +76,6 @@ Não foram utilizadas como entradas variáveis que identificassem diretamente a 
 
 ## Análise inicial dos dados
 
-Para a classificação, `X` foi definido pelas três variáveis de entrada `potencia_kw`, `latitude` e `longitude`, enquanto `y` corresponde à coluna `fonte`, que representa a classe a ser prevista.
-
-Não foram utilizadas como entradas variáveis que identificassem diretamente a fonte de geração, como siglas, nomes, códigos ou descrições.
-
----
-
-## Análise inicial dos dados
-
 Antes do treinamento dos modelos foi realizada uma análise exploratória do conjunto de dados.
 
 Foram verificadas:
@@ -151,13 +143,13 @@ Para Precisão, Recall e F1-Score foi utilizada a média **macro**, que calcula 
 
 ## Resultados da classificação
 
-| Modelo | Acurácia | Precisão (macro) | Revocação (macro) | F1-Score (macro) |
+| Modelo | Acurácia | Precisão (macro) | Recall (macro) | F1-Score (macro) |
 |---|---:|---:|---:|---:|
 | Logistic Regression | 82,47% | 82,82% | 82,14% | 81,97% |
 | Gaussian Naive Bayes | 70,23% | 73,32% | 71,52% | 69,94% |
 | Decision Tree | **96,13%** | **96,14%** | **96,10%** | **96,12%** |
 
-A **Decision Tree** apresentou os maiores valores nas quatro métricas avaliadas, alcançando **96,13% de acurácia**, **96,14% de precisão macro**, **96,10% de recall macro** e **96,12% de F1-Score macro**.
+A **Decision Tree** apresentou os maiores valores nas quatro métricas avaliadas, alcançando **96,13% de acurácia**, **96,14% de precisão macro**, **96,10% de Recall macro** e **96,12% de F1-Score macro**.
 
 Na matriz de confusão, o modelo classificou corretamente **233 registros de Eólica, 286 de Hidráulica e 227 de Solar**. A maior confusão ocorreu entre as classes **Solar e Hidráulica**, com **8 registros solares classificados como hidráulicos**.
 
