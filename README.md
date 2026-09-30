@@ -2,7 +2,7 @@
 
 Projeto desenvolvido para a disciplina de **Soluções em Energias Renováveis e Sustentáveis (SERS)**, do curso de **Ciência da Computação da FIAP**.
 
-O projeto utiliza dados obtidos por meio de **duas APIs públicas** para desenvolver duas tarefas de aprendizado de máquina utilizando Python:
+O projeto utiliza dados obtidos por meio de **duas APIs públicas** para desenvolver duas tarefas de Machine Learning utilizando Python:
 
 1. classificação da fonte de geração de energia renovável;
 2. regressão da radiação solar.
@@ -35,7 +35,7 @@ CP5_SERS/
 
 ---
 
-# 1. Classificação da Fonte Renovável
+# 1. Classificação (ANEEL)
 
 ## Fonte dos dados
 
@@ -48,6 +48,13 @@ As fontes foram agrupadas em três classes:
 - **Solar** — empreendimentos UFV;
 - **Eólica** — empreendimentos EOL;
 - **Hidráulica** — empreendimentos UHE, PCH e CGH.
+
+| Atributo no CSV | Origem na API | Descrição | Papel |
+|---|---|---|---|
+| `potencia_kw` | `MdaPotenciaOutorgadaKw` | Potência outorgada em quilowatts; não representa energia produzida | Entrada |
+| `latitude` | `NumCoordNEmpreendimento` | Latitude aproximada, em graus decimais | Entrada |
+| `longitude` | `NumCoordEEmpreendimento` | Longitude aproximada, em graus decimais | Entrada |
+| `fonte` | `SigTipoGeracao` | Categoria da fonte, agrupada em três classes | Alvo |
 
 Os dados representam informações cadastrais dos empreendimentos e não correspondem à quantidade de energia efetivamente gerada.
 
