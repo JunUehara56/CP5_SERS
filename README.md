@@ -62,24 +62,9 @@ Os dados representam informações cadastrais dos empreendimentos e não corresp
 
 ## Variáveis utilizadas
 
-Para realizar a classificação foram utilizadas três variáveis de entrada:
+Para a classificação, `X` foi definido pelas três variáveis de entrada `potencia_kw`, `latitude` e `longitude`, enquanto `y` corresponde à coluna `fonte`, que representa a classe a ser prevista.
 
-| Variável | Descrição |
-|---|---|
-| `potencia_kw` | Potência outorgada do empreendimento em quilowatts |
-| `latitude` | Latitude aproximada do empreendimento |
-| `longitude` | Longitude aproximada do empreendimento |
-
-A variável alvo utilizada foi:
-
-| Variável | Descrição |
-|---|---|
-| `fonte` | Tipo de fonte de geração: Solar, Eólica ou Hidráulica |
-
-Dessa forma:
-
-- `X` contém `potencia_kw`, `latitude` e `longitude`;
-- `y` contém a coluna `fonte`.
+Não foram utilizadas como entradas variáveis que identificassem diretamente a fonte de geração, como siglas, nomes, códigos ou descrições.
 
 ---
 
@@ -146,7 +131,7 @@ Os modelos foram avaliados utilizando:
 - **F1-Score**;
 - **Matriz de Confusão**.
 
-Para Precision, Recall e F1-Score foi utilizada a média **macro**, atribuindo o mesmo peso para cada uma das três classes.
+Para Precision, Recall e F1-Score foi utilizada a média **macro**, que calcula a métrica individualmente para cada classe e atribui o mesmo peso às três fontes.
 
 ---
 
@@ -176,7 +161,17 @@ Empreendimentos de fontes diferentes podem apresentar potências semelhantes ou 
 
 # 2. Regressão da Radiação Solar
 
-> Esta seção será completada após a implementação e avaliação dos modelos de regressão.
+## Fonte dos dados
+
+Os dados utilizados nesta etapa são provenientes da **API histórica Open-Meteo**.
+
+A consulta utiliza dados horários estimados para **Petrolina (PE)**, nas coordenadas aproximadas **-9,39, -40,50**, no período de **01/04/2025 a 30/06/2025**, utilizando o fuso horário `America/Recife`.
+
+Cada registro representa uma hora local entre **7h e 17h**.
+
+Os dados históricos são derivados de modelos e reanálises meteorológicas e não representam medições de geração de um painel fotovoltaico.
+
+> Os modelos, métricas, resultados e conclusões desta seção serão adicionados após a implementação da tarefa de regressão.
 
 ---
 
@@ -188,6 +183,7 @@ Empreendimentos de fontes diferentes podem apresentar potências semelhantes ou 
 - **Seaborn**
 - **Scikit-learn**
 - **Jupyter Notebook / Google Colab**
+- **Orange Data Mining**
 - **APIs REST**
 - **Git**
 - **GitHub**
@@ -217,7 +213,10 @@ O notebook pode ser executado utilizando:
 
 Execute as células do notebook em ordem para realizar a obtenção e preparação dos dados, análise exploratória, treinamento dos modelos e avaliação dos resultados.
 
-Os arquivos CSV utilizados no projeto também estão disponíveis no repositório.
+Os arquivos CSV utilizados no projeto também estão disponíveis no repositório:
+
+- `aneel_classificacao_orange.csv`;
+- `meteo_regressao_orange.csv`.
 
 ---
 
