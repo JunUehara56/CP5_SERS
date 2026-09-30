@@ -49,6 +49,14 @@ As fontes foram agrupadas em três classes:
 - **Eólica** — empreendimentos EOL;
 - **Hidráulica** — empreendimentos UHE, PCH e CGH.
 
+Os dados representam informações cadastrais dos empreendimentos e não correspondem à quantidade de energia efetivamente gerada.
+
+---
+
+## Estrutura dos dados
+
+A partir dos dados obtidos pela API, foram selecionados e preparados os seguintes atributos para a tarefa de classificação:
+
 | Atributo no CSV | Origem na API | Descrição | Papel |
 |---|---|---|---|
 | `potencia_kw` | `MdaPotenciaOutorgadaKw` | Potência outorgada em quilowatts; não representa energia produzida | Entrada |
@@ -56,11 +64,17 @@ As fontes foram agrupadas em três classes:
 | `longitude` | `NumCoordEEmpreendimento` | Longitude aproximada, em graus decimais | Entrada |
 | `fonte` | `SigTipoGeracao` | Categoria da fonte, agrupada em três classes | Alvo |
 
-Os dados representam informações cadastrais dos empreendimentos e não correspondem à quantidade de energia efetivamente gerada.
-
 ---
 
 ## Variáveis utilizadas
+
+Para o treinamento dos modelos, `X` foi definido pelas três variáveis de entrada `potencia_kw`, `latitude` e `longitude`, enquanto `y` corresponde à coluna `fonte`, que representa a classe a ser prevista.
+
+Não foram utilizadas como entradas variáveis que identificassem diretamente a fonte de geração, como siglas, nomes, códigos ou descrições.
+
+---
+
+## Análise inicial dos dados
 
 Para a classificação, `X` foi definido pelas três variáveis de entrada `potencia_kw`, `latitude` e `longitude`, enquanto `y` corresponde à coluna `fonte`, que representa a classe a ser prevista.
 
