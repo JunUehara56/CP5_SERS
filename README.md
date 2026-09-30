@@ -35,7 +35,7 @@ CP5_SERS/
 
 ---
 
-# 1. Classificação (ANEEL)
+# 1. Classificação da Fonte Renovável
 
 ## Fonte dos dados
 
@@ -139,37 +139,37 @@ Modelo baseado em regras de decisão, capaz de representar relações não linea
 
 Os modelos foram avaliados utilizando:
 
-- **Accuracy**;
-- **Precision**;
+- **Acurácia**;
+- **Precisão**;
 - **Recall**;
 - **F1-Score**;
 - **Matriz de Confusão**.
 
-Para Precision, Recall e F1-Score foi utilizada a média **macro**, que calcula a métrica individualmente para cada classe e atribui o mesmo peso às três fontes.
+Para Precisão, Recall e F1-Score foi utilizada a média **macro**, que calcula a métrica individualmente para cada classe e atribui o mesmo peso às três fontes.
 
 ---
 
 ## Resultados da classificação
 
-| Modelo | Accuracy | Precision (macro) | Recall (macro) | F1-Score (macro) |
+| Modelo | Acurácia | Precisão (macro) | Revocação (macro) | F1-Score (macro) |
 |---|---:|---:|---:|---:|
 | Logistic Regression | 82,47% | 82,82% | 82,14% | 81,97% |
 | Gaussian Naive Bayes | 70,23% | 73,32% | 71,52% | 69,94% |
 | Decision Tree | **96,13%** | **96,14%** | **96,10%** | **96,12%** |
 
-A **Decision Tree** apresentou os maiores valores das métricas no conjunto de teste utilizado.
+A **Decision Tree** apresentou os maiores valores nas quatro métricas avaliadas, alcançando **96,13% de acurácia**, **96,14% de precisão macro**, **96,10% de recall macro** e **96,12% de F1-Score macro**.
 
-Na matriz de confusão desse modelo foram obtidas **233 classificações corretas para Eólica, 286 para Hidráulica e 227 para Solar**. A maior confusão observada ocorreu entre Solar e Hidráulica, com 8 registros solares classificados como hidráulicos.
+Na matriz de confusão, o modelo classificou corretamente **233 registros de Eólica, 286 de Hidráulica e 227 de Solar**. A maior confusão ocorreu entre as classes **Solar e Hidráulica**, com **8 registros solares classificados como hidráulicos**.
 
 ---
 
 ## Conclusão da classificação
 
-Entre os três classificadores avaliados, a **Decision Tree** apresentou os maiores resultados no conjunto de teste, alcançando aproximadamente **96,13% de acurácia**.
+Considerando os resultados obtidos no conjunto de teste, a **Decision Tree** apresentou o melhor desempenho entre os três classificadores avaliados.
 
-Apesar do desempenho obtido, a classificação utiliza somente potência, latitude e longitude. Essas características não representam todas as diferenças existentes entre fontes de geração.
+Apesar dos resultados, o modelo utiliza apenas `potencia_kw`, `latitude` e `longitude` como entradas. Essas três características não representam todas as diferenças existentes entre as fontes de geração: empreendimentos de fontes distintas podem apresentar potências semelhantes ou estar localizados em regiões próximas.
 
-Empreendimentos de fontes diferentes podem apresentar potências semelhantes ou estar localizados em regiões próximas. Portanto, os resultados obtidos neste conjunto de dados não garantem o mesmo desempenho em novos dados ou em outros contextos.
+Por esse motivo, o desempenho obtido neste conjunto de dados não garante o mesmo resultado para novos dados, outras regiões ou diferentes contextos de aplicação.
 
 ---
 
@@ -177,7 +177,7 @@ Empreendimentos de fontes diferentes podem apresentar potências semelhantes ou 
 
 ## Fonte dos dados
 
-Os dados utilizados nesta etapa são provenientes da **API histórica Open-Meteo**.
+Os dados utilizados nesta etapa são provenientes da **[API histórica Open-Meteo](API histórica Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api)**.
 
 A consulta utiliza dados horários estimados para **Petrolina (PE)**, nas coordenadas aproximadas **-9,39, -40,50**, no período de **01/04/2025 a 30/06/2025**, utilizando o fuso horário `America/Recife`.
 
@@ -193,7 +193,7 @@ A partir dos dados obtidos pela API, foram preparados os seguintes atributos par
 
 | Atributo no CSV | Origem na API | Descrição | Papel |
 |---|---|---|---|
-| `data_hora` | `time` | Data e hora local do registro | Identificação e ordenação temporal |
+| `data_hora` | `time` | Data e hora local; use para ordenar e separar por tempo | Identificação, não entrada |
 | `temperatura_c` | `temperature_2m` | Temperatura do ar a 2 m, em °C | Entrada |
 | `umidade_pct` | `relative_humidity_2m` | Umidade relativa a 2 m, em % | Entrada |
 | `nuvens_pct` | `cloud_cover` | Cobertura total de nuvens, em % | Entrada |
@@ -274,8 +274,8 @@ Modelo que combina várias árvores de decisão, permitindo representar relaçõ
 
 Os modelos foram avaliados utilizando:
 
-- **MAE (Mean Absolute Error)** — representa o erro absoluto médio das previsões;
-- **MSE (Mean Squared Error)** — penaliza de forma mais intensa erros de maior magnitude;
+- **MAE (Erro Absoluto Médio)** — representa o erro absoluto médio das previsões;
+- **MSE (Erro Quadrático Médio)** — penaliza de forma mais intensa erros de maior magnitude;
 - **R² (Coeficiente de Determinação)** — indica quanto da variação da variável alvo é explicada pelo modelo.
 
 Para MAE e MSE, valores menores representam erros menores. Para R², valores maiores indicam maior capacidade de explicar a variação da radiação no conjunto avaliado.
@@ -290,11 +290,11 @@ Para MAE e MSE, valores menores representam erros menores. Para R², valores mai
 | Decision Tree Regressor | 88,79 | 15.291,16 | 0,6741 |
 | Random Forest Regressor | **66,80** | **7.307,42** | **0,8442** |
 
-O **Random Forest Regressor** apresentou os menores valores de MAE e MSE e o maior R² entre os três modelos avaliados.
+O **Random Forest Regressor** apresentou o melhor desempenho entre os três modelos avaliados, com o menor MAE e MSE e o maior R².
 
-Seu MAE de **66,80 W/m²** indica que as previsões se afastaram dos valores reais em aproximadamente 66,80 W/m², em média. O R² de **0,8442** indica que o modelo conseguiu explicar aproximadamente **84,42% da variação da radiação solar no conjunto de teste**.
+O MAE de **66,80 W/m²** indica um erro absoluto médio de aproximadamente 66,80 W/m², enquanto o R² de **0,8442** indica que o modelo explicou aproximadamente **84,42% da variação da radiação solar no conjunto de teste**.
 
-Também foi elaborado um gráfico de valores reais × previstos para o Random Forest, permitindo visualizar a proximidade entre as previsões realizadas pelo modelo e os valores reais de radiação.
+Também foi elaborado um gráfico de valores reais × previstos para o Random Forest, permitindo visualizar o comportamento das previsões em relação aos valores reais.
 
 ---
 
@@ -302,19 +302,19 @@ Também foi elaborado um gráfico de valores reais × previstos para o Random Fo
 
 No Random Forest, a variável `hora` apresentou a maior importância entre as cinco entradas utilizadas, correspondendo a aproximadamente **48,85% da importância calculada pelo modelo**.
 
-Esse resultado reforça a relevância do horário para a estimativa da radiação solar, que varia ao longo do dia. A relação entre hora e radiação não é necessariamente linear, o que também ajuda a explicar por que a correlação linear entre `hora` e `radiacao_w_m2` pode ser baixa mesmo quando a variável apresenta alta importância no Random Forest.
+Esse resultado reforça a relevância do horário para a estimativa da radiação solar. Como a radiação varia ao longo do dia e sua relação com a hora não é necessariamente linear, uma correlação linear baixa entre `hora` e `radiacao_w_m2` não significa que a variável tenha pouca importância para o modelo.
 
 ---
 
 ## Conclusão da regressão
 
-Entre os três modelos avaliados, o **Random Forest Regressor** apresentou o melhor desempenho no conjunto de teste, com MAE de **66,80 W/m²**, MSE de **7.307,42 (W/m²)²** e R² de **0,8442**.
+Entre os três modelos avaliados, o **Random Forest Regressor** apresentou os melhores resultados no conjunto de teste.
 
-Os resultados sugerem que relações não lineares entre temperatura, umidade, cobertura de nuvens, velocidade do vento, hora do dia e radiação solar são relevantes para o problema, uma vez que os modelos baseados em árvores apresentaram resultados superiores aos da Regressão Linear.
+Os resultados sugerem que relações não lineares entre as variáveis meteorológicas, a hora do dia e a radiação solar são relevantes para o problema, considerando o desempenho superior dos modelos baseados em árvores em relação à Regressão Linear.
 
-Entretanto, estimar a radiação solar em W/m² **não equivale automaticamente a prever a energia elétrica produzida por um sistema fotovoltaico**. A geração elétrica também depende de fatores como área e eficiência dos módulos, orientação e inclinação dos painéis, temperatura de operação e perdas do sistema.
+Entretanto, estimar a radiação solar em W/m² **não equivale automaticamente a prever a energia elétrica produzida por um sistema fotovoltaico**. A geração elétrica também depende de características do sistema, como área e eficiência dos módulos, orientação e inclinação dos painéis, temperatura de operação e perdas.
 
-Portanto, os modelos desenvolvidos nesta etapa estimam a **radiação solar**, e não diretamente a quantidade de energia elétrica que seria produzida por uma instalação fotovoltaica.
+Portanto, os modelos desenvolvidos nesta etapa estimam a **radiação solar**, e não diretamente a energia elétrica produzida por uma instalação fotovoltaica.
 
 ---
 
