@@ -282,7 +282,7 @@ Para MAE e MSE, valores menores representam erros menores. Para R², valores mai
 | Decision Tree Regressor | 88,79 | 15.291,16 | 0,6741 |
 | Random Forest Regressor | **66,80** | **7.307,42** | **0,8442** |
 
-O **Random Forest Regressor** apresentou o melhor desempenho entre os três modelos avaliados, com o menor MAE e MSE e o maior R².
+O **Random Forest Regressor** apresentou o melhor desempenho entre os três modelos avaliados, com o menor MAE, o menor MSE e o maior R².
 
 O MAE de **66,80 W/m²** indica um erro absoluto médio de aproximadamente 66,80 W/m², enquanto o R² de **0,8442** indica que o modelo explicou aproximadamente **84,42% da variação da radiação solar no conjunto de teste**.
 
